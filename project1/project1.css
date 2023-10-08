@@ -1,0 +1,55 @@
+body {
+    /background-repeat: no-repeat; 
+     background-size: cover; 
+    height: 100vh;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    font-family: "East Sea Dokdo", cursive;
+    background-image: url(soju.jpg);
+  }
+.container {
+    border: 10px solid white;
+    border-radius: 20px;
+    text-align: center;
+    padding:20px 100px 50px 100px;
+    background-color: rgba(247, 243, 242, 0.7);
+  }
+.subject{
+    font-size: 70px;
+    color: green;
+}
+.game{
+    font-size: 40px;
+}
+.chance{
+    font-size: 20px;
+}
+
+.button-style {
+    height: 50px;
+    width: 100px;
+    margin-top: 20px;
+    border-radius: 20px;
+    font-size: 18pt;
+    font-weight: bold;
+    font-family: "East Sea Dokdo", cursive;
+    color:rgb(132, 6, 6);
+  }
+
+
+.form{
+    height: 50px;
+    width:300px;
+    font-size: 20px;
+    color:black;
+    text-align: center;
+    border:2px solid black;
+    border-radius: 10px;
+    font-family: 'East sea Dokdo', cursive;
+}
+.direct{
+    font-size:25px;
+    color:rgb(132, 6, 6);
+}
