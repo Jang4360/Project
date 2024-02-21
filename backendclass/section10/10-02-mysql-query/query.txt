@@ -1,0 +1,83 @@
+show databases
+;
+use myproject
+;
+show tables
+;
+desc product
+;
+select * from product
+;
+insert into product(id, name, description, price) 
+              values(uuid(), '마우스', '정말좋은 마우스 입니다.',15000)
+;
+insert into product(id, name, description, price) 
+              values(uuid(), '노트북', '정말좋은 노트북 입니다.',2700000)
+;
+insert into product(id, name, description, price) 
+              values(uuid(), '셔츠', '정말좋은 셔츠 입니다.',40000)
+;
+delete from product 
+	where name = '셔츠'
+;
+update product 
+	set price = 18000
+	where name = '마우스'
+;
+
+#====================조인===================
+select * from product_sales_location
+;
+insert into product_sales_location(id, address, addressDetail, lat, lng, meetingTime)
+							values(uuid(), '구로구', '구로디지털단지', 37.134234, 127.124896, '2024-01-27')
+;
+update product
+	set productSalesLocationId = '245a79ac-bdf8-11ee-8fc1-db11c1939f65'
+	where name = '마우스'
+;
+select p.id, name, price, address, addressDetail as '상세주'
+	from product p, product_sales_location ps
+	where p.productSalesLocationId  = ps.id 
+;
+
+#====================추가기능====================
+update product 
+	set isSoldout = TRUE 
+  where name = '노트북'
+  	and price = 20000 
+ ;
+ update product 
+	set isSoldout = TRUE 
+  where name = '노트북'
+  	or price = 20000 
+ ;
+ 
+#===================주석 쉽게 다는 방법 ====================
+# update / delete에서는 가급적 사용하지 않기 
+select *
+	from product p
+  where 1=1
+  	and price = 5000
+  	and name = '마우스'
+  	and isSoldout = false
+;
+#=====================쿼리==================
+select name, SUM(price)
+	from product
+  group by name
+;
+select name,price,isSoldout SUM(price)
+	from product
+  order by price,name desc  #가격이 동일할 때 이름 기준으로 정렬 
+;
+
+#=====================서브쿼리=====================
+select name,
+       price,
+       isSoldout,
+       (select max(price) from product) as maxPrice  #쿼리문안에 서브쿼리 가능
+	from product  # from문에도 서브쿼리 가능 (=인라인 뷰)
+	where (price>= abg(price) from product) # where조건문 안에 서브쿼리 가능
+
+#======================ANSI-SQL===================
+미국에서 규정한 표준 sql 

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      const clicks = () => {
+        //1. 입력한 휴대폰 번호를 가져온다.
+        const phoneNum = document.getElementById("valid").value;
+        console.log("나의전화번호", phoneNum);
+        //2. 해당 휴대폰번호로 인증번호를 요청한다. (fetch, axios)
+        axios
+          .post("http://localhost:3000/tokens/Phone", {
+            qqq: phoneNum,
+          })
+          .then((res) => {
+            console.log(res.data);
+            if (res.data) {
+              document.getElementById("result").innerText = res.data;
+            }
+          });
+      };
+    </script>
+  </head>
+  <body>
+    <h1>회원가입하기</h1>
+    <div>
+      휴대폰 : <input id="valid" placeholder="번호를 입력하세요" />
+      <button onclick="clicks()">인증하기</button>
+    </div>
+    <div id="result">인증상태</div>
+    <button id="join">회원가입하기</button>
+  </body>
+</html>

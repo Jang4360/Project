@@ -1,0 +1,23 @@
+#DB보여줘 
+show databases;
+
+#DB변경해줘 
+use myproject;
+
+#테이블 보여줘 
+show tables;
+
+#DB 설정값 보여줘 (connection 최대값 = max_connections)
+show variables;
+
+#커넥션 최대값 바꿔줘
+set global max_connections = 15;
+
+#지금 연결된 커넥션 갯수 보여줘 
+show status;
+
+#지금 연결된 커넥션 리스트 보여줘
+show processlist;
+
+#커넥션 끊어줘(kill 커넥션id)
+kill 44;
